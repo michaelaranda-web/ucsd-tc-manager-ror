@@ -12,8 +12,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ucsd_tc_management_development
+  database: ucsd_tc_management_test
 
 production:
   <<: *default
-  database: ucsd_tc_management_development
+  database: ucsd_tc_management
