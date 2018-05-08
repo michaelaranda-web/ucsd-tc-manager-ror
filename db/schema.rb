@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508041120) do
+ActiveRecord::Schema.define(version: 20180508061649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20180508041120) do
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
-    t.float    "volunteer_hours"
+    t.float    "volunteer_hours", default: 0.0
     t.boolean  "driver"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_foreign_key "events", "event_types"
