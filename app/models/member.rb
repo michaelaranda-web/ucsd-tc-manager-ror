@@ -1,4 +1,4 @@
 class Member < ActiveRecord::Base
-  has_many :attended_events, class_name: "EventsAttendedByMember"
-  has_many :events, through: :attended_events
+  has_many :events_attended_by_members
+  has_many :attended_events, through: :events_attended_by_members, source: :event
 end

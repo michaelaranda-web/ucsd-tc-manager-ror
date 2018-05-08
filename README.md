@@ -13,3 +13,7 @@ Found following error in Heroku logs:
     ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "users" does not exist
     
 Found following fix: https://teamtreehouse.com/community/deploying-to-heroku-error
+
+PROBLEM: Adding association between members and events, where events have attendees and members have attended events
+SOLUTION:
+    Used reference: https://www.learneroo.com/modules/137/nodes/767
