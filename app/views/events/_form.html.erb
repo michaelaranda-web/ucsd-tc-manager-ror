@@ -46,6 +46,9 @@
   <div class="event-type-dropdown">
     <%= collection_select(:event, :event_type_id, EventType.all, :id, :name, prompt: true) %>  
   </div>
+  <div class="members-dropdown">
+    <%= select_tag 'attendees[]', options_from_collection_for_select(@members, :id, :name), multiple: true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

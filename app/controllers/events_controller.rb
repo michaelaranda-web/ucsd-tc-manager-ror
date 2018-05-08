@@ -10,11 +10,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.find(params[:id])
+    @attendees = @event.attendees
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @members = Member.all
   end
 
   # GET /events/1/edit
@@ -25,9 +28,13 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    
     respond_to do |format|
       if @event.save
+        attendees_param.each do |attendee|
+          EventsAttendedByMember.create(member_id: attendee, event_id: @event.id)
+        end
+        
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -80,5 +87,9 @@ class EventsController < ApplicationController
         :end_time,
         :event_type_id
         )
+    end
+    
+    def attendees_param
+      params.require(:attendees)
     end
 end
