@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Volunteer hours:</strong>
+  <%= @member.volunteer_hours %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @member.driver %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
