@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event_type.name %>
+</p>
+
+<p>
+  <strong>Volunteer hours:</strong>
+  <%= @event_type.volunteer_hours %>
+</p>
+
+<p>
+  <strong>Driving distance:</strong>
+  <%= @event_type.driving_distance %>
+</p>
+
+<%= link_to 'Edit', edit_event_type_path(@event_type) %> |
+<%= link_to 'Back', event_types_path %>
