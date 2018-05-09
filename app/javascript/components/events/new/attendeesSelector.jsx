@@ -59,7 +59,12 @@ export class AttendeesSelector extends React.Component {
   
   renderSelectedMembers() {
     return this.state.selectedMembers.map((member, i) => {
-      return <div key={i}>{member}</div>
+      return (
+        <div>
+          {member}
+          <input className="hidden" key={i} name={`attendees[]`} value={member} />
+        </div>
+      )
     })
   }
   

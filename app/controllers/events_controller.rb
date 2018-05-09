@@ -90,6 +90,6 @@ class EventsController < ApplicationController
     end
     
     def attendees_param
-      params.permit(:attendees)
+      params.permit(:attendees => [])[:attendees]
     end
 end
