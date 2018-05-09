@@ -3,3 +3,10 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', events_path %>
+
+<%= content_tag :div,
+  id: "members_data",
+  members: @members.to_json do %>
+<% end %>
+
+<%= javascript_pack_tag 'events_new' %>

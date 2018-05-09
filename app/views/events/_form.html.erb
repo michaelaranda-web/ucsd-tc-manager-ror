@@ -46,7 +46,7 @@
   <div class="event-type-dropdown">
     <%= collection_select(:event, :event_type_id, EventType.all, :id, :name, prompt: true) %>  
   </div>
-  <div class="attendees-selector"></div>
+  <div class="attendees-selector-container"></div>
   <div class="actions">
     <%= f.submit %>
   </div>
