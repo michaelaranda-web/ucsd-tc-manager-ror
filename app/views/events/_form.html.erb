@@ -51,3 +51,12 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= javascript_tag do %>
+  //Disables form submit via Enter key
+  $("form").on("keypress", function (e) {
+      if (e.keyCode == 13) {
+          return false;
+      }
+  });
+<% end %>
