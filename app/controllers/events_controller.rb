@@ -31,8 +31,10 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       if @event.save
-        attendees_param.each do |attendee|
-          EventAttendedByMember.create(member_id: attendee, event_id: @event.id)
+        if attendees_param
+          attendees_param.each do |attendee|
+            EventAttendedByMember.create(member_id: attendee, event_id: @event.id)
+          end
         end
         
         format.html { redirect_to @event, notice: 'Event was successfully created.' }

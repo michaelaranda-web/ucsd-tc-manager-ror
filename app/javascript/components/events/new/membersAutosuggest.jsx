@@ -70,7 +70,10 @@ export class MembersAutosuggest extends React.Component {
   renderSelectedMembers() {
     return this.state.selectedMembers.map((member, i) => {
       return (
-        <div key={i}>{member}</div>
+        <div key={i}>
+          {member}
+          <input className="hidden" name={`attendees[]`} value={member} />
+        </div>
       );
     })
   }
