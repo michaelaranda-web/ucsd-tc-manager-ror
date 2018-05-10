@@ -1,5 +1,6 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest';
+import { findWithAttr } from '../../../helpers/arrayHelpers';
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
@@ -15,9 +16,7 @@ function getSuggestions(value, members, selectedMembers) {
 
   const regex = new RegExp('^' + escapedValue, 'i');
   let suggestions = members.filter(member => regex.test(member.name));
-  console.log("Initial suggestions: " + suggestions);
-  let remainingSuggestions = suggestions.filter(member => selectedMembers.indexOf(member.id) === -1 );
-  console.log("Remaining: " + remainingSuggestions);
+  let remainingSuggestions = suggestions.filter(member => findWithAttr(selectedMembers, "name", member.name) === -1 );
   return remainingSuggestions;
 }
 
@@ -62,7 +61,7 @@ export class MembersAutosuggest extends React.Component {
   
   onSuggestionSelectedCustom = (suggestion, suggestionValue, suggestionIndex, sectionIndex, method) => {
     this.setState({
-      selectedMembers: [...this.state.selectedMembers, suggestionValue.suggestion.id],
+      selectedMembers: [...this.state.selectedMembers, suggestionValue.suggestion],
       value: ''
     });
   };
@@ -71,8 +70,8 @@ export class MembersAutosuggest extends React.Component {
     return this.state.selectedMembers.map((member, i) => {
       return (
         <div key={i}>
-          {member}
-          <input className="hidden" name={`attendees[]`} value={member} />
+          {member.name}
+          <input className="hidden" name={`attendees[]`} value={member.id} />
         </div>
       );
     })
