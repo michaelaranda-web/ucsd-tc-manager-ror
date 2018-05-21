@@ -1,8 +1,19 @@
 import $ from 'jquery'
 import React from 'react'
 import MembersAutosuggest from './membersAutosuggest.jsx'
+import {findWithAttr} from '../../../helpers/arrayHelpers';
 
 export class NewEventForm extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      name: "",
+      volunteerHours: 0,
+      drivingDistance: 0
+    }
+  }
+  
   componentDidMount() {
     $("form").on("keypress", function (e) {
       if (e.keyCode == 13) {
@@ -97,8 +108,8 @@ export class NewEventForm extends React.Component {
   
   renderEventTypeSelector() {
     return (
-      <select name="event[event_type_id]" defaultValue="default">
-        <option disabled value="default">Select existing event type</option>
+      <select name="event[event_type_id]" defaultValue="default" onChange={this.onEventTypeSelect.bind(this)}>
+        <option disabled value="default">Select recurring event type</option>
           {
             this.props.eventTypes.map((eventType, i) => {
               return (
@@ -116,24 +127,26 @@ export class NewEventForm extends React.Component {
     return (
       <form className="add-event-form" id="new_event" action="/events" acceptCharset="UTF-8" method="post">
         <input type="hidden" name="authenticity_token" value={this.props.authenticityToken || ''} />
+        <label>If submitting a recurring event, select from the following dropdown:</label>
+        <br />
         {this.renderEventTypeSelector()}
         <br />
         <br />
         <div className="field">
           <label htmlFor="event_name">Name</label>
           <br />
-          <input type="text" name="event[name]" id="event_name"/>
+          <input type="text" name="event[name]" id="event_name" value={this.state.name} />
         </div>
         {this.renderDateTimeSelectors()}
         <div className="field">
           <label htmlFor="event_volunteer_hours">Volunteer Hours</label>
           <br />
-          <input type="text" name="event[volunteer_hours]" id="event_volunteer_hours"/>
+          <input type="text" name="event[volunteer_hours]" id="event_volunteer_hours" value={this.state.volunteerHours} />
         </div>
         <div className="field">
           <label htmlFor="event_driving_distance">Driving Distance</label>
           <br />
-          <input type="text" name="event[driving_distance]" id="event_driving_distance"/>
+          <input type="text" name="event[driving_distance]" id="event_driving_distance" value={this.state.drivingDistance} />
         </div>
         <div className="field">
           <label htmlFor="event_event_summary">Event Summary</label>
@@ -149,6 +162,17 @@ export class NewEventForm extends React.Component {
         <input type="submit" name="commit" value="Create Event" />
       </form>
     );
+  }
+  
+  onEventTypeSelect(e) {
+    let selectedEventTypeIndex = findWithAttr(this.props.eventTypes, "id", parseInt(e.target.value));
+    let selectedEventType = this.props.eventTypes[selectedEventTypeIndex];
+    
+    this.setState({
+      name: selectedEventType.name,
+      volunteerHours: selectedEventType.volunteer_hours,
+      drivingDistance: selectedEventType.driving_distance
+    })
   }
 }
 
