@@ -1,12 +1,13 @@
 <h1>New Event</h1>
 
-<%= render 'form' %>
+<div class="new-event-page-container"></div>
 
 <%= link_to 'Back', events_path %>
 
 <%= content_tag :div,
-  id: "members_data",
-  members: @members.to_json do %>
+  id: "events_new_data",
+  members: @members.to_json,
+  event_types: @event_types.to_json do %>
 <% end %>
 
 <%= javascript_pack_tag 'events_new' %>

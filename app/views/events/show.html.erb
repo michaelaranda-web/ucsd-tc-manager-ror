@@ -32,12 +32,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <%= "#{@event.start_time.hour}:#{@event.start_time.min.to_s.rjust(2,'0')}" %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= "#{@event.end_time.hour}:#{@event.end_time.min.to_s.rjust(2,'0')}" %>
 </p>
 
 <p>

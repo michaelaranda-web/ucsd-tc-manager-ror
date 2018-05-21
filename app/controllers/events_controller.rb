@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  skip_before_action :protect_from_forgery
+  protect_from_forgery with: :null_session
+  
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -18,6 +21,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @members = Member.all
+    @event_types = EventType.all
   end
 
   # GET /events/1/edit
@@ -27,6 +31,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    puts "*" * 80
+    puts event_params
+    puts attendees_param
+    puts "*" * 80
+    
     @event = Creators::Event.new.create_from_post(attendees_param, event_params)
     
     respond_to do |format|
