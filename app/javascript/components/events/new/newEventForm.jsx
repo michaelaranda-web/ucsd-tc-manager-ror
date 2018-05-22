@@ -9,6 +9,10 @@ export class NewEventForm extends React.Component {
     
     this.state = {
       name: "",
+      startTimeHour: 0,
+      startTimeMinutes: 0,
+      endTimeHour: 0,
+      endTimeMinutes: 0,
       volunteerHours: 0,
       drivingDistance: 0
     }
@@ -82,10 +86,20 @@ export class NewEventForm extends React.Component {
           <input type="hidden" id="event_start_time_1i" name="event[start_time(1i)]" value={currYear} />
           <input type="hidden" id="event_start_time_2i" name="event[start_time(2i)]" value={currMonth} />
           <input type="hidden" id="event_start_time_3i" name="event[start_time(3i)]" value={currDay} />
-          <select id="event_start_time_4i" name="event[start_time(4i)]">
+          <select 
+            id="event_start_time_4i" 
+            name="event[start_time(4i)]" 
+            value={this.state.startTimeHour}
+            onChange={this.onStartTimeHourChange.bind(this)}
+          >
             {start_time_hours}
           </select>
-          <select id="event_start_time_5i" name="event[start_time(5i)]">
+          <select 
+            id="event_start_time_5i" 
+            name="event[start_time(5i)]" 
+            value={this.state.startTimeMinutes}
+            onChange={this.onStartTimeMinutesChange.bind(this)}
+          >
             {start_time_minutes}
           </select>
         </div>
@@ -95,10 +109,20 @@ export class NewEventForm extends React.Component {
           <input type="hidden" id="event_end_time_1i" name="event[end_time(1i)]" value={currYear}/>
           <input type="hidden" id="event_end_time_2i" name="event[end_time(2i)]" value={currMonth} />
           <input type="hidden" id="event_end_time_3i" name="event[end_time(3i)]" value={currDay} />
-          <select id="event_end_time_4i" name="event[end_time(4i)]">
+          <select 
+            id="event_end_time_4i" 
+            name="event[end_time(4i)]" 
+            value={this.state.endTimeHour}
+            onChange={this.onEndTimeHourChange.bind(this)}
+          >
             {end_time_hours}
           </select>
-          <select id="event_end_time_5i" name="event[end_time(5i)]">
+          <select 
+            id="event_end_time_5i" 
+            name="event[end_time(5i)]"
+            value={this.state.endTimeMinutes}
+            onChange={this.onEndTimeMinutesChange.bind(this)}
+          >
             {end_time_minutes}
           </select>
         </div>
@@ -170,8 +194,36 @@ export class NewEventForm extends React.Component {
     
     this.setState({
       name: selectedEventType.name,
+      startTimeHour: selectedEventType.start_time_hour,
+      startTimeMinutes: selectedEventType.start_time_minutes,
+      endTimeHour: selectedEventType.end_time_hour,
+      endTimeMinutes: selectedEventType.end_time_minutes,
       volunteerHours: selectedEventType.volunteer_hours,
       drivingDistance: selectedEventType.driving_distance
+    })
+  }
+  
+  onStartTimeHourChange(e) {
+    this.setState({
+      startTimeHour: e.target.value  
+    })
+  }
+  
+  onStartTimeMinutesChange(e) {
+    this.setState({
+      startTimeMinutes: e.target.value  
+    })
+  }
+  
+  onEndTimeHourChange(e) {
+    this.setState({
+      endTimeHour: e.target.value  
+    })
+  }
+  
+  onEndTimeMinutesChange(e) {
+    this.setState({
+      endTimeMinutes: e.target.value  
     })
   }
 }
