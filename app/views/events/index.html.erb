@@ -2,12 +2,14 @@
 
 <h1>Listing Events</h1>
 
-<%= form_tag search_events_path, :method => 'get' do %>
- <%= text_field_tag :event_name, nil, placeholder: 'Search by event name' %>
- <%= submit_tag "Search", :event_name => nil  %>
-<% end %>
+<div class="events-search-row">
+  <%= form_tag search_events_path, :method => 'get' do %>
+   <%= text_field_tag :event_name, nil, placeholder: 'Search by event name' %>
+   <%= submit_tag "Search", :event_name => nil  %>
+  <% end %>
+</div>
 
-<table>
+<table class="events-index-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -41,9 +43,9 @@
         <td><%= event.driving_distance %></td>
         <td><%= event.event_summary %></td>
         <td><%= event.comments %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table-link"><%= link_to 'Show', event %></td>
+        <td class="table-link"><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td class="table-link"><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

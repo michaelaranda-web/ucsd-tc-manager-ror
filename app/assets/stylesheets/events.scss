@@ -2,8 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.add-event-form {
-  .event-type-dropdown {
-    margin: 15px 0;
+.events-search-row {
+  margin: 20px 0;
+}
+
+.events-index-table {
+  .table-link {
+    padding-right: 0;
+  }
+}
+
+.new-event-page-container {
+  .add-event-form {
+    .event-type-dropdown {
+      margin: 15px 0;
+    }
+    
+    textarea {
+      width: 350px;
+      height: 60px;
+    }
+    
+    .buttons-row {
+      margin: 20px 0;
+    }
+    
+    .buttons-row > * {
+      display: inline-block;
+      margin-right: 10px;
+    }
   }
 }

@@ -182,8 +182,12 @@ export class NewEventForm extends React.Component {
           <br />
           <textarea name="event[comments]" id="event_comments"></textarea>
         </div>
+        <label htmlFor="event_attendees">Attendees</label>
         <MembersAutosuggest members={this.props.members} />
-        <input type="submit" name="commit" value="Create Event" />
+        <div class="buttons-row">
+          <button onClick={() => { window.location.href='/events' }} type="button">Back</button>
+          <input type="submit" name="commit" value="Create Event" />
+        </div>
       </form>
     );
   }
