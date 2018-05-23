@@ -44,6 +44,12 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
   end
+  
+  def search
+    @events = Event.search_by_name(params[:event_name])
+    
+    render 'index'
+  end
 
   # POST /events
   # POST /events.json
