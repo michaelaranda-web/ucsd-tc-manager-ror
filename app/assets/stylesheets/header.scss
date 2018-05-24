@@ -1,11 +1,40 @@
 ul.hmenu {
   list-style: none;	
+  height: 40px;
+  border-bottom: 1px solid black;
   margin: 0 0 2em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 0;
   text-align: right;
-}
-
-ul.hmenu li {
-  display: inline;  
+  
+  li {
+    display: inline;  
+  }
+  
+  #site-header {
+    float: left;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    
+    &:hover {
+      color: initial;
+    }
+    
+    #site-logo {
+      width: 30px;
+      height: 30px;
+    }
+    
+    #site-title {
+      padding: 0 5px;
+    }
+  }
+  
+  .header-links {
+    height: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
 }

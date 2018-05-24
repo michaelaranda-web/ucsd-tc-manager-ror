@@ -9,7 +9,15 @@
 </head>
 <body>
   <ul class="hmenu">
-    <%= render 'devise/menu/login_items' %>
+    <a href="/">
+      <div id="site-header">
+        <%= image_tag "site-logo.jpeg", id: "site-logo" %>
+        <span id="site-title">Club Manager</span>
+      </div>
+    </a>
+    <div class="header-links">
+      <%= render 'devise/menu/login_items' %>  
+    </div>
   </ul>
 
 <%= yield %>
