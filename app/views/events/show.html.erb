@@ -47,7 +47,7 @@
 <p>
   <strong>Attendees:</strong>
   <% @attendees.each do |attendee| %>
-    <p><%= attendee.name %></p>
+    <p><%= link_to attendee.name, attendee %></p>
   <% end %>
 </p>
 

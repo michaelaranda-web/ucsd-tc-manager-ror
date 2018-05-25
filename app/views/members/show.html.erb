@@ -15,5 +15,14 @@
   <%= @member.driver %>
 </p>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
+<strong>Events Attended</strong>
+<div class="attended-events">
+  <% @member.attended_events.each do |event| %>
+    <%= link_to "#{event.date} #{event.name}", event %>
+  <% end %>
+</div>
+
+<br />
+
+<%= link_to 'Edit', edit_member_path(@member) %>
 <%= link_to 'Back', members_path %>
