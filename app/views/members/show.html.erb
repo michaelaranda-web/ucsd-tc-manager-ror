@@ -18,7 +18,9 @@
 <strong>Events Attended</strong>
 <div class="attended-events">
   <% @member.attended_events.each do |event| %>
-    <%= link_to "#{event.date} #{event.name}", event %>
+    <div>
+      <%= link_to "#{event.date} #{event.name}", event %>
+    </div>
   <% end %>
 </div>
 
