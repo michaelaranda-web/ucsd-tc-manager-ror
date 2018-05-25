@@ -54,11 +54,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    puts "*" * 80
-    puts event_params
-    puts attendees_param
-    puts "*" * 80
-    
     @event = Creators::Event.new.create_from_post(attendees_param, event_params)
     
     respond_to do |format|
