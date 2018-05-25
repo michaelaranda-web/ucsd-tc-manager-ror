@@ -116,8 +116,6 @@ class EventsController < ApplicationController
     end
     
     def attendees_param
-      # params.require(:attendees).permit(ids: [], drove: [])
-      
       params.require(:attendees).map do |p|
         ActionController::Parameters.new(p.to_hash).permit(:id, :drove)
       end
