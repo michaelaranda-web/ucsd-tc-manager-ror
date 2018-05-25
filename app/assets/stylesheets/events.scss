@@ -23,6 +23,21 @@
       height: 60px;
     }
     
+    .selected-members-section {
+      > div:first-of-type {
+        margin-top: 10px;
+      }
+      
+      .selected-member-row {
+        display: flex;
+        padding: 0 5px;
+        
+        .name {
+          width: 200px;   
+        }
+      }
+    }
+    
     .buttons-row {
       margin: 20px 0;
     }

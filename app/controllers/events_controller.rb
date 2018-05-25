@@ -54,6 +54,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    puts "*" * 80
+    puts attendees_param
+    puts "*" * 80
     @event = Creators::Event.new.create_from_post(attendees_param, event_params)
     
     respond_to do |format|
@@ -113,6 +116,10 @@ class EventsController < ApplicationController
     end
     
     def attendees_param
-      params.permit(:attendees => [])[:attendees]
+      # params.require(:attendees).permit(ids: [], drove: [])
+      
+      params.require(:attendees).map do |p|
+        ActionController::Parameters.new(p.to_hash).permit(:id, :drove)
+      end
     end
 end

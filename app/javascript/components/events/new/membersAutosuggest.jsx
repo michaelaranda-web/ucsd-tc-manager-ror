@@ -1,5 +1,6 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest';
+import Checkbox from '../../checkbox';
 import { findWithAttr } from '../../../helpers/arrayHelpers';
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
@@ -69,9 +70,16 @@ export class MembersAutosuggest extends React.Component {
   renderSelectedMembers() {
     return this.state.selectedMembers.map((member, i) => {
       return (
-        <div key={i}>
-          {member.name}
-          <input className="hidden" id="event_attendees" name={`attendees[]`} value={member.id} />
+        <div key={i} className="selected-member-row">
+          <span className="name">{member.name}</span>
+          <Checkbox 
+            label={member.name}
+            name={`attendees[][drove]`}
+            id="event_attendee_drove"
+          />
+          <span>Drove</span>
+          
+          <input className="hidden" id="event_attendees" name={`attendees[][id]`} value={member.id} />
         </div>
       );
     })
@@ -95,7 +103,9 @@ export class MembersAutosuggest extends React.Component {
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={inputProps} />
-        { this.renderSelectedMembers() }
+        <div className="selected-members-section">
+          { this.renderSelectedMembers() }
+        </div>
       </div>
     );
   }
