@@ -15,6 +15,11 @@
   <%= @member.driver %>
 </p>
 
+<p>
+  <strong>Qualified for Uniform?</strong>
+  <%= @member.qualifies_for_uniform? %>
+</p>
+
 <strong>Events Attended</strong>
 <div class="attended-events">
   <% @member.attended_events.each do |event| %>

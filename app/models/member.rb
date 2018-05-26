@@ -12,4 +12,8 @@ class Member < ActiveRecord::Base
     new_hours_count = [0, self.volunteer_hours - hours].max
     update_attributes(volunteer_hours: new_hours_count)
   end
+  
+  def qualifies_for_uniform?
+    return self.volunteer_hours > 15
+  end
 end
