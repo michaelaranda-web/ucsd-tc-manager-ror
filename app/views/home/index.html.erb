@@ -1,13 +1,48 @@
 <%= javascript_pack_tag 'index' %>
 
-<h1>Welcome</h1>
-
-<div>
-  <%= link_to 'View Events', events_path %>    
-</div>
-<div>
-  <%= link_to 'Submit an Event', new_event_path %>    
-</div>
-<div>
-  <%= link_to 'View Members', members_path %>
+<div id="home-page">
+  <h1 class="home-page-header">Welcome</h1>
+  
+  <div class="home-page-columns-section">
+    <div class="home-page-column">
+      <div class="home-page-section">
+        <h2>Events</h2>
+        <div>
+          <%= link_to 'View Events', events_path %>    
+        </div>
+        <div>
+          <%= link_to 'Submit an Event', new_event_path %>    
+        </div>
+        <div>
+          <a href="https://docs.google.com/forms/d/1ob1t2WxEYQfJulIpZpNph68QwwWSjGMowcafsEpuQOo/edit">Event Page Order Form</a>  
+        </div>
+      </div>
+      
+      <div class="home-page-section">
+        <h2>Public</h2>
+        <div>
+          <a href="https://www.facebook.com/ucsdtzuching/">Facebook Group</a>  
+        </div>
+        <div>
+          <a href="https://ucsdtzuching.wordpress.com/">Wordpress</a>  
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-page-column">
+      <div class="home-page-section">
+        <h2>Members</h2>
+        <div>
+          <%= link_to 'View Members', members_path %>
+        </div>
+      </div>
+      
+      <div class="home-page-section">
+        <h2>Documentation</h2>
+        <div>
+          <a href="https://docs.google.com/document/d/1NDqkY-gUT1MVg-ClIipBT62Evixtsmo6_650Qb60qA0/edit">Officer Handbook</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
