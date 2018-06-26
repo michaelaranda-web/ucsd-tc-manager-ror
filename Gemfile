@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'pg', '~> 0.18.4'
 gem 'devise'
 gem "rolify"
