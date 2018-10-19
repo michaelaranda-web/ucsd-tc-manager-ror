@@ -1,33 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <strong>Name:</strong>
   <%= @event_type.name %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Volunteer hours:</strong>
   <%= @event_type.volunteer_hours %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Driving distance:</strong>
   <%= @event_type.driving_distance %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Start time:</strong>
   <% if @event_type.start_time %>
     <%= "#{@event_type.start_time.hour}:#{@event_type.start_time.min.to_s.rjust(2,'0')}" %>
   <% end %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>End time:</strong>
   <% if @event_type.end_time %>
     <%= "#{@event_type.end_time.hour}:#{@event_type.end_time.min.to_s.rjust(2,'0')}" %>
   <% end %>
-</p>
+</div>
 
 <%= link_to 'Edit', edit_event_type_path(@event_type) %> |
 <%= link_to 'Back', event_types_path %>

@@ -3,13 +3,11 @@ class Creators::Event
     event = ::Event.create!(event_params)
     
     attendees_param.each do |attendee_param|
-      Creators::EventAttendedByMember.new.create(Member.find(attendee_param[:id]), event)
+      conditions = {
+        drove: attendee_param[:drove] == "true"
+      }
       
-      if attendee_param[:drove] == "true"
-        puts "*" * 80
-        puts "#{Member.find(attendee_param[:id]).name} drove."
-        puts "*" * 80
-      end
+      Creators::EventAttendedByMember.new.create(Member.find(attendee_param[:id]), event, conditions)
       
       #TODO: calculate reimbursement and, for each attendee driver, send reimbursement email
     end

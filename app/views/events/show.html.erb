@@ -1,55 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <strong>Name:</strong>
   <%= @event.name %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Date:</strong>
   <%= @event.date %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Event summary:</strong>
   <%= @event.event_summary %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Comments:</strong>
   <%= @event.comments %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Volunteer hours:</strong>
   <%= @event.volunteer_hours %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Driving distance:</strong>
   <%= @event.driving_distance %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Start time:</strong>
   <% if @event.start_time %>
     <%= "#{@event.start_time.hour}:#{@event.start_time.min.to_s.rjust(2,'0')}" %>
   <% end %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>End time:</strong>
   <% if @event.end_time %>
     <%= "#{@event.end_time.hour}:#{@event.end_time.min.to_s.rjust(2,'0')}" %>
   <% end %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Attendees:</strong>
   <% @attendees.each do |attendee| %>
     <p><%= link_to attendee.name, attendee %></p>
   <% end %>
-</p>
+</div>
+
+<div>
+  <strong>Drivers:</strong>
+  <% @drivers.each do |driver| %>
+    <p><%= link_to driver.name, driver %></p>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

@@ -15,6 +15,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees
+    @drivers = EventAttendedByMember.where(event_id: @event.id, member_drove: true).map do |event_attended_by_member|
+      Member.find(event_attended_by_member.member_id)
+    end
+      
   end
 
   # GET /events/new
